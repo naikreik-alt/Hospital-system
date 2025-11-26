@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Hospitalario</title>
+    <style>
+        body { font-family: Arial; background: #f0f0f0; padding: 20px; }
+        h1 { color: #2c3e50; }
+        .caja { background:white; padding:20px; border-radius:10px; width:300px; }
+        input, button { width: 100%; padding: 10px; margin-top:10px; }
+    </style>
+</head>
+<body>
+    <h1>Sistema Hospitalario</h1>
+    <div class="caja">
+        <h3>Registrar Paciente</h3>
+        <input type="text" id="nombre" placeholder="Nombre del paciente">
+        <input type="number" id="edad" placeholder="Edad">
+        <input type="text" id="diagnostico" placeholder="Diagnóstico">
+        <button onclick="guardar()">Guardar</button>
+    </div>
+
+    <h3>Pacientes Registrados</h3>
+    <ul id="lista"></ul>
+
+    <script>
+        function guardar() {
+            let nombre = document.getElementById('nombre').value;
+            let edad = document.getElementById('edad').value;
+            let diag = document.getElementById('diagnostico').value;
+
+            if (!nombre || !edad || !diag) {
+                alert("Completa todos los campos");
+                return;
+            }
+
+            let li = document.createElement("li");
+            li.textContent = nombre + " — " + edad + " años — " + diag;
+
+            document.getElementById("lista").appendChild(li);
+
+            document.getElementById('nombre').value = "";
+            document.getElementById('edad').value = "";
+            document.getElementById('diagnostico').value = "";
+        }
+    </script>
+</body>
+</html>
